@@ -7,6 +7,10 @@
 ```bash
 # build conan package
 conan create . gocarlos/testing --build missing
+
+conan remote add gocarlos https://api.bintray.com/conan/gocarlos/public-conan
+conan user -p $BINTRAY_API_KEY -r gocarlos gocarlos
+
 # upload package to gocarlos artifactory
 conan upload bacnetstack -r gocarlos
 ```
