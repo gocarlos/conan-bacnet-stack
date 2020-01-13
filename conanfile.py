@@ -2,7 +2,7 @@ from conans import ConanFile, CMake, tools
 
 
 class BacnetStackConan(ConanFile):
-    name = "bacnetstack"
+    name = "bacnet-stack"
     version = "4.3.0"
     license = "BSD"
     author = "Carlos Gomes Martinho kmartinho8@gmail.com"
@@ -19,10 +19,11 @@ class BacnetStackConan(ConanFile):
     generators = "cmake"
 
     def source(self):
-        self.run("git clone https://github.com/gocarlos/bacnet-stack.git")
+        self.run("git clone --branch build--add-more-options-to-cmake https://github.com/gocarlos/bacnet-stack.git")
 
     def _configure_cmake(self):
         cmake = CMake(self)
+        cmake.definitions["BACNET_STACK_BUILD_APPS"] = False
         cmake.configure(source_folder="bacnet-stack")
         return cmake
 
