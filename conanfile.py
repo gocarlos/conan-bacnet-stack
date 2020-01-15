@@ -7,7 +7,9 @@ class BacnetStackConan(ConanFile):
     license = "BSD"
     author = "Carlos Gomes Martinho kmartinho8@gmail.com"
     url = "https://github.com/bacnet-stack/bacnet-stack/"
-    description = "BACnet Protocol Stack library provides a BACnet application layer, network layer and media access (MAC) layer communications services."
+    description = """
+        BACnet Protocol Stack library provides a BACnet application layer,
+        network layer and media access (MAC) layer communications services."""
     topics = ("bacnet")
     settings = "os", "compiler", "build_type", "arch"
     options = {
@@ -19,7 +21,7 @@ class BacnetStackConan(ConanFile):
     generators = "cmake"
 
     def source(self):
-        self.run("git clone --branch build--add-more-options-to-cmake https://github.com/gocarlos/bacnet-stack.git")
+        self.run("git clone https://github.com/bacnet-stack/bacnet-stack.git")
 
     def _configure_cmake(self):
         cmake = CMake(self)
